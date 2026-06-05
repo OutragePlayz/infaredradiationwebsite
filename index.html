@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infrared Radiation Waves</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="topbar" aria-label="Project sections">
+      <a href="#spectrum">Spectrum</a>
+      <a href="#properties">Properties</a>
+      <a href="#discovery">Discovery</a>
+      <a href="#uses">Benefits</a>
+      <a href="#risks">Harms</a>
+      <a href="#references">References</a>
+    </nav>
+    <div class="hero-grid">
+      <section class="hero-copy">
+        <p class="eyebrow">Electromagnetic Waves Project</p>
+        <h1>Infrared Radiation Waves</h1>
+        <p class="lead">Infrared radiation is invisible electromagnetic energy with wavelengths longer than red visible light and shorter than microwaves. We cannot usually see it, but we often feel it as heat.</p>
+        <div class="quick-facts" aria-label="Infrared quick facts">
+          <span>Wavelength: about 0.78 to 1000 micrometers</span>
+          <span>Frequency: about 300 GHz to 400 THz</span>
+          <span>Non-ionizing radiation</span>
+        </div>
+      </section>
+      <section class="hero-visual" aria-label="Infrared waves visual">
+        <canvas id="heroCanvas" width="720" height="460"></canvas>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section class="band intro" id="name">
+      <div class="content two-column">
+        <div>
+          <p class="eyebrow">Name</p>
+          <h2>Why is it called infrared?</h2>
+          <p>The word <strong>infrared</strong> means “below red.” On the electromagnetic spectrum, infrared starts just past the red edge of visible light. It is “below” red because it has lower frequency and lower photon energy than visible red light.</p>
+        </div>
+        <div class="definition-list" aria-label="Infrared description">
+          <div>
+            <strong>What it is</strong>
+            <span>A form of electromagnetic radiation, like radio waves, visible light, ultraviolet, X-rays, and gamma rays.</span>
+          </div>
+          <div>
+            <strong>What it does</strong>
+            <span>Transfers energy through waves. Warm objects naturally emit infrared radiation.</span>
+          </div>
+          <div>
+            <strong>How humans notice it</strong>
+            <span>Mostly as warmth, because skin absorbs many infrared wavelengths as heat.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="spectrum">
+      <div class="content">
+        <p class="eyebrow">Location on the EM Spectrum</p>
+        <h2>Infrared sits between visible light and microwaves</h2>
+        <div class="spectrum" aria-label="Electromagnetic spectrum with infrared highlighted">
+          <span class="radio">Radio</span>
+          <span class="micro">Microwave</span>
+          <span class="ir active">Infrared</span>
+          <span class="visible">Visible</span>
+          <span class="uv">Ultraviolet</span>
+          <span class="xray">X-ray</span>
+          <span class="gamma">Gamma</span>
+        </div>
+        <div class="spectrum-labels">
+          <span>Longer wavelength, lower frequency</span>
+          <span>Shorter wavelength, higher frequency</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="band simulator-band" id="properties">
+      <div class="content">
+        <p class="eyebrow">Properties and Adjustable Scale</p>
+        <h2>Change the wavelength to see how infrared waves work</h2>
+        <div class="simulator">
+          <section class="control-panel" aria-label="Infrared wave controls">
+            <label for="wavelength">Infrared wavelength</label>
+            <input id="wavelength" type="range" min="0.78" max="1000" value="10" step="0.01">
+            <div class="range-row">
+              <span>0.78 micrometers</span>
+              <span>1000 micrometers</span>
+            </div>
+
+            <div class="readouts" aria-live="polite">
+              <div>
+                <span class="metric-label">Wavelength</span>
+                <strong id="wavelengthOut">10 µm</strong>
+              </div>
+              <div>
+                <span class="metric-label">Frequency</span>
+                <strong id="frequencyOut">29.98 THz</strong>
+              </div>
+              <div>
+                <span class="metric-label">Photon energy</span>
+                <strong id="energyOut">0.124 eV</strong>
+              </div>
+              <div>
+                <span class="metric-label">Infrared region</span>
+                <strong id="regionOut">Mid infrared</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="wave-stage" aria-label="Animated infrared wave model">
+            <canvas id="waveCanvas" width="900" height="440"></canvas>
+            <div class="wave-caption" id="waveCaption">At 10 µm, this wave is in mid infrared and is strongly connected to heat detection.</div>
+          </section>
+        </div>
+
+        <div class="property-grid">
+          <article>
+            <h3>Wavelength</h3>
+            <p>Infrared wavelengths are longer than visible light. Longer wavelengths mean wave crests are farther apart.</p>
+          </article>
+          <article>
+            <h3>Frequency</h3>
+            <p>Frequency decreases as wavelength increases. The website calculates it with <strong>frequency = speed of light ÷ wavelength</strong>.</p>
+          </article>
+          <article>
+            <h3>Energy</h3>
+            <p>Infrared photons have less energy than visible or ultraviolet photons, which is why infrared is non-ionizing.</p>
+          </article>
+          <article>
+            <h3>Heat</h3>
+            <p>Objects near room temperature emit much of their thermal radiation in infrared wavelengths.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band thermal-section">
+      <div class="content two-column">
+        <div>
+          <p class="eyebrow">How Detection Works</p>
+          <h2>Thermal cameras turn infrared into visible colors</h2>
+          <p>A thermal camera does not “see heat” directly with human eyes. Its sensor detects infrared radiation, then software maps stronger infrared emission to brighter colors.</p>
+          <label class="temp-control" for="temperature">Object temperature</label>
+          <input id="temperature" type="range" min="0" max="100" value="42">
+          <p class="temp-readout"><strong id="tempOut">42°C</strong> object: <span id="tempExplain">warm enough to glow brightly on a thermal image.</span></p>
+          <figure class="generated-figure">
+            <img src="assets/infrared-thermal-camera.png" alt="Illustration of infrared waves traveling from a warm object toward a thermal camera sensor">
+            <figcaption>Generated visual aid: infrared waves being detected and converted into a thermal image.</figcaption>
+          </figure>
+        </div>
+        <div class="thermal-demo" aria-label="Thermal camera color simulation">
+          <div class="thermal-screen">
+            <div class="thermal-object" id="thermalObject"></div>
+            <div class="thermal-shadow"></div>
+          </div>
+          <div class="color-scale" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="discovery">
+      <div class="content">
+        <p class="eyebrow">Discovery</p>
+        <h2>William Herschel discovered infrared radiation in 1800</h2>
+        <div class="timeline">
+          <article>
+            <span>1</span>
+            <h3>Sunlight through a prism</h3>
+            <p>Herschel split sunlight into colors using a prism.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Thermometers in the colors</h3>
+            <p>He measured temperature in different parts of the spectrum.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Warmth beyond red</h3>
+            <p>The thermometer just beyond red became warmest, even though no visible color was there.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Invisible radiation</h3>
+            <p>That invisible energy became known as infrared radiation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="uses">
+      <div class="content">
+        <p class="eyebrow">Benefits</p>
+        <h2>Everyday and technology uses</h2>
+        <div class="cards">
+          <article>
+            <h3>Remote controls</h3>
+            <p>Many TV remotes send coded pulses of near-infrared light to a receiver.</p>
+          </article>
+          <article>
+            <h3>Thermal imaging</h3>
+            <p>Firefighters, electricians, and inspectors use infrared cameras to find heat patterns, hidden hot spots, or insulation problems.</p>
+          </article>
+          <article>
+            <h3>Astronomy</h3>
+            <p>Infrared telescopes observe cooler stars, dust clouds, and objects hidden behind space dust.</p>
+          </article>
+          <article>
+            <h3>Medicine and science</h3>
+            <p>Infrared tools help monitor temperature, image blood flow patterns, and identify molecules using infrared spectroscopy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band risks" id="risks">
+      <div class="content">
+        <p class="eyebrow">Harms and Disadvantages</p>
+        <h2>Infrared is useful, but strong exposure can be dangerous</h2>
+        <div class="cards">
+          <article>
+            <h3>Skin burns</h3>
+            <p>Powerful infrared heaters, lamps, furnaces, or lasers can heat skin enough to burn it.</p>
+          </article>
+          <article>
+            <h3>Eye injury</h3>
+            <p>The eye can absorb infrared radiation as heat. Strong sources can damage the cornea, lens, or retina depending on wavelength and intensity.</p>
+          </article>
+          <article>
+            <h3>Invisible hazard</h3>
+            <p>Because most infrared is invisible, a person may not blink or look away from a dangerous IR source quickly enough.</p>
+          </article>
+          <article>
+            <h3>Signal limits</h3>
+            <p>Infrared remote signals usually need a clear path and can be blocked by walls, people, or objects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band light" id="references">
+      <div class="content">
+        <p class="eyebrow">References</p>
+        <h2>Sources used</h2>
+        <ol class="references">
+          <li><a href="https://science.nasa.gov/ems/07_infraredwaves/">NASA Science: Infrared Waves</a></li>
+          <li><a href="https://www.britannica.com/science/infrared-radiation">Encyclopaedia Britannica: Infrared Radiation</a></li>
+          <li><a href="https://imagine.gsfc.nasa.gov/science/toolbox/emspectrum1.html">NASA Imagine the Universe: Electromagnetic Spectrum</a></li>
+          <li><a href="https://www.osha.gov/non-ionizing-radiation">OSHA: Non-Ionizing Radiation</a></li>
+          <li><a href="https://www.cdc.gov/niosh/docs/82-109/default.html">CDC/NIOSH: Biological Effects of Infrared Radiation</a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#top">Back to top</a>
+    <span>Infrared Radiation Waves Project</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
